@@ -1,7 +1,9 @@
 $ErrorActionPreference="stop"
 
 Write-Host "--- Fetching latest release data from omnitruck API"
-$Uri = "https://omnitruck.chef.io/stable/chef-workstation/metadata?p=windows&pv=2016&m=x86_64&v=latest"
+# TODO WARNING DOOM: make sure  v=latest after testing complete
+# For now, we're going to update this for individual runs in pipeline tests, specifying unpublished versions.
+$Uri = "https://omnitruck.chef.io/stable/chef-workstation/metadata?p=windows&pv=2016&m=x86_64&v=0.16.33"
 $releaseRecord = Invoke-RestMethod -Uri $Uri -Headers @{accept="application/json"} -ErrorAction Stop
 
 Write-Host "--- Copying templates locally"
