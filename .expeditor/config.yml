@@ -80,6 +80,9 @@ subscriptions:
       - bash:.expeditor/update_chef.sh
       # update gemfile.lock and make it a PR
       - bash:.expeditor/update_dep.sh
+      # publish to third party package managers that have a dependency
+      # on this artifact's availability
+      - trigger_pipeline:third-party-packages
   - workload: ruby_gem_published:appbundler-*
     actions:
        - bash:.expeditor/update_dep.sh
